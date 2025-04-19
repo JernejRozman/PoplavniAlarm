@@ -91,3 +91,8 @@ def login_required(view):
         return view(**kwargs)
 
     return wrapped_view
+
+@bp.route("/scrape")
+def scrape():
+    headlines = scrape()
+    return render_template("auth/scrape.html", headlines=headlines)
