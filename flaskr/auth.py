@@ -7,6 +7,12 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from flaskr.db import get_db
 
+### Zato, da se po 1 uri ponovno izvede scrape
+from datetime import datetime, timedelta
+
+last_scrape_time = None
+
+
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 
@@ -116,8 +122,6 @@ def scrape_news():
                         'river': river,
                         'location': tds[1].get_text(strip=True),
                         'water_level': tds[2].get_text(strip=True),
-                        'flow': tds[3].get_text(strip=True),
-                        'temperature': tds[5].get_text(strip=True)
                     })
     return savinja_data
 
@@ -125,3 +129,8 @@ def scrape_news():
 def scrape():
     headlines = scrape_news()
     return render_template("auth/scrape.html", headlines=headlines)
+
+
+@bp.route("/notify")
+def notify():
+    return render_template("auth/notify.html")

@@ -1,17 +1,20 @@
-<h1>Stanje voda Savinje</h1>
+<h1>Podatki o rekah</h1>
 
 <table>
     <tr>
+      <th>Reka</th>
       <th>Lokacija</th>
       <th>Višina vode (cm)</th>
-
+      <th>Pretok (m³/s)</th>
+      <th>Temperatura (°C)</th>
     </tr>
     {% for entry in headlines %}
     <tr>
+      <td>{{ entry.river }}</td>
       <td>{{ entry.location }}</td>
       <td>{{ entry.water_level }}</td>
+      <td>{{ entry.flow }}</td>
+      <td>{{ entry.temperature }}</td>
     </tr>
     {% endfor %}
   </table>
-
-
