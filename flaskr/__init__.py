@@ -20,9 +20,17 @@ def create_app(test_config=None):
     app.register_blueprint(auth.bp)
 
     
-    from . import blog
-    app.register_blueprint(blog.bp)
-    app.add_url_rule('/', endpoint='index')
+#    from . import blog
+#    app.register_blueprint(blog.bp)
+#    app.add_url_rule('/', endpoint='index')
+
+    from flask import redirect, url_for
+
+    from . import scrape
+    app.register_blueprint(scrape.bp)
+    @app.route("/")
+    def index():
+        return redirect(url_for('scrape.scrape'))
 
 
     if test_config is None:

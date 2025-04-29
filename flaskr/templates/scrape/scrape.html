@@ -1,20 +1,57 @@
-<h1>Podatki o rekah</h1>
+{% extends 'base.html' %}
+{% block title %}Meritve Savinje{% endblock %}
+
+{% block header %}
+<h1>Stanje voda Savinje</h1>
+<p style="text-align:center;">
+  Zadnja osvežitev: {{ last_refresh if last_refresh else "—" }} UTC
+  |
+  <form action="{{ url_for('scrape.manual_refresh') }}" method="post" style="display:inline;">
+    <button type="submit">Ročna osvežitev 🔄</button>
+  </form>
+</p>
+
+<!-- 🚨 CSS -->
+<style>
+  .alert { background:#ffdddd; }
+</style>
+{% endblock %}
+
+{% block content %}
+<script>setTimeout(()=>location.reload(),3600_000);</script>
 
 <table>
+  <thead>
     <tr>
-      <th>Reka</th>
       <th>Lokacija</th>
-      <th>Višina vode (cm)</th>
-      <th>Pretok (m³/s)</th>
-      <th>Temperatura (°C)</th>
+      <th>Višina&nbsp;(cm)</th>
+      <th>Pretok</th>
+      <th>Temp&nbsp;(°C)</th>
+      <th>Alarmni&nbsp;prag</th>
+      <th>Nastavi nov&nbsp;prag</th>
     </tr>
-    {% for entry in headlines %}
-    <tr>
-      <td>{{ entry.river }}</td>
-      <td>{{ entry.location }}</td>
-      <td>{{ entry.water_level }}</td>
-      <td>{{ entry.flow }}</td>
-      <td>{{ entry.temperature }}</td>
-    </tr>
+  </thead>
+
+  <tbody>
+    {% for row in headlines %}
+      {% set wl = row.water_level|replace(',', '')|int %}
+      {% set th = thresholds.get(row.location) %}
+      <tr class="{{ 'alert' if th is not none and wl < (th | int) else '' }}">
+        <td>{{ row.location }}</td>
+        <td>{{ row.water_level }}</td>
+        <td>{{ row.flow }}</td>
+        <td>{{ row.temperature }}</td>
+        <td>{{ th if th is not none else '—' }}</td>
+        <td>
+          <form action="{{ url_for('scrape.set_threshold') }}" method="post" style="display:inline;">
+            <input type="hidden" name="location" value="{{ row.location }}">
+            <input type="number" name="threshold" min="0" placeholder="cm" required style="width:70px">
+            <button type="submit">Shrani ✅</button>
+          </form>
+        </td>
+      </tr>
     {% endfor %}
-  </table>
+  </tbody>
+</table>
+
+{% endblock %}

@@ -3,7 +3,7 @@ body { max-width: 960px; margin: 0 auto; background: white; }
 h1 { font-family: serif; color: #377ba8; margin: 1rem 0; }
 a { color: #377ba8; }
 hr { border: none; border-top: 1px solid lightgray; }
-nav { background: lightgray; display: flex; align-items: center; padding: 0 0.5rem; }
+nav { background: rgb(211, 211, 211); display: flex; align-items: center; padding: 0 0.5rem; }
 nav h1 { flex: auto; margin: 0; }
 nav h1 a { text-decoration: none; padding: 0.25rem 0.5rem; }
 nav ul  { display: flex; list-style: none; margin: 0; padding: 0; }
@@ -28,3 +28,96 @@ input[type=submit] { align-self: start; min-width: 10em; }
 
 
 
+/* ------------- Global reset & fonts ---------------- */
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Inter",sans-serif;}
+body{color:#1b1d29;background:#fff;line-height:1.5;}
+
+/* ------------- Split hero layout ------------------- */
+.hero{
+  display:flex;
+  min-height:100vh;
+}
+
+/* left side (content / table) */
+.hero__left{
+  flex:1 1 55%;
+  padding:7rem 4rem 4rem 6rem;
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+/* right side (form panel) */
+.hero__right{
+  flex:1 1 45%;
+  background:#0390ff;              /* primary blue */
+  color:#fff;
+  position:relative;
+  padding:6rem 4rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+/* decorative diagonal strip */
+.hero__right::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:#f4f7ff;
+  clip-path:polygon(0 0,100% 0,100% 100%,70% 100%);
+  opacity:.15;
+}
+
+/* ------------- Table styling ----------------------- */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:2rem;
+  font-size:1rem;
+}
+th,td{
+  border:1px solid #e3e6f0;
+  padding:.75rem 1rem;
+  text-align:center;
+}
+th{background:#eaf2ff;font-weight:600;}
+tbody tr:nth-child(even){background:#f9fbff;}
+.alert{background:#ffdede !important;}
+
+/* ------------- Buttons & inputs -------------------- */
+button,.btn{
+  background:#1b1d29;
+  color:#fff;
+  border:none;
+  padding:.55rem 1.4rem;
+  font-size:.95rem;
+  cursor:pointer;
+  transition:.2s;
+}
+button:hover,.btn:hover{background:#2e2f3c;}
+input[type=number],input[type=text],input[type=email]{
+  width:100%;
+  padding:.55rem .9rem;
+  margin:.4rem 0 1rem;
+  border:1px solid #cbd2e0;
+  border-radius:4px;
+}
+
+/* form wrapper in right panel */
+.quote-form{
+  max-width:350px;
+  margin:0 auto;
+}
+
+/* headings */
+h1{font-size:3rem;color:#0390ff;margin-bottom:1.2rem;}
+h2{font-size:1.3rem;margin-bottom:.8rem;color:#fff}
+
+/* timestamp + refresh */
+.refresh-info{
+  margin-bottom:1.2rem;
+  font-size:1rem;
+}
+.refresh-info form{display:inline;}
