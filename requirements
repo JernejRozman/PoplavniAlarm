@@ -1,2 +1,6 @@
-flask
-datetime
+Flask
+requests
+beautifulsoup4
+click
+Werkzeug
+MarkupSafe
