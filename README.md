@@ -10,7 +10,6 @@ Aplikacija je samostojna in deluje na lokalnem strežniku.
 
 
 
-flask --app flaskr run --debug
 
 ### Namestitev (lokalno)
 
