@@ -13,8 +13,9 @@ flask --app flaskr run --debug
 ### Namestitev (lokalno)
 
 1. **Kloniraj repozitorij**:
-   ```bash
-    git clone https://github.com/JernejRozman/PoplavniAlarm
+```bash
+git clone https://github.com/JernejRozman/PoplavniAlarm
+```
 3. **Namestimo odvisnosti:**
 
 ```bash
