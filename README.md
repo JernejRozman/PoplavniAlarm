@@ -6,3 +6,24 @@ To doseže tako, da vsako uro preglejuje https://www.arso.gov.si/vode/podatki/st
 
 Potem si določimo prag pri katerem naj javlja in za vsakega uporabnika nato razpošilja E-Maile, ko voda doseže svoj prag.
 
+
+
+flask --app flaskr run --debug
+
+### Namestitev (lokalno)
+
+1. **Kloniraj repozitorij**:
+   ```bash
+    git clone https://github.com/JernejRozman/PoplavniAlarm
+3. **Namestimo odvisnosti:**
+
+```bash
+pip install -r requirements.txt
+```
+
+3. **Poženemo flask strežnik:**
+
+```bash
+flask --app flaskr run --debug
+```
+
