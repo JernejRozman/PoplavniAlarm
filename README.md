@@ -1,5 +1,8 @@
 # PoplavniAlarm
 
+<p align="center">
+  <img src="" width="400" lenght="400"/>
+</p>
 Spletna aplikacija je namenjena pravočasnemu opozarjanju oseb zaradi višine reke Savinje za mesto Laško.
 
 To doseže tako, da vsako uro preglejuje https://www.arso.gov.si/vode/podatki/stanje_voda_samodejne.html in s te tabele vzame potrebne podatke in jih posodablja vsako uro.
