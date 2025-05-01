@@ -1,7 +1,7 @@
 # PoplavniAlarm
 
 <p align="center">
-  <img src="" width="400" lenght="400"/>
+  <img src="slika.png" alt="Description of image">
 </p>
 Spletna aplikacija je namenjena pravočasnemu opozarjanju oseb zaradi višine reke Savinje za mesto Laško.
 
