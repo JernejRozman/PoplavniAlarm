@@ -5,7 +5,7 @@
 <h1>Stanje voda Savinje</h1>
 <p style="text-align:center;">
   Zadnja osvežitev: {{ last_refresh if last_refresh else "—" }} UTC
-  |
+  
   <form action="{{ url_for('scrape.manual_refresh') }}" method="post" style="display:inline;">
     <button type="submit">Ročna osvežitev 🔄</button>
   </form>
